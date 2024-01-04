@@ -5,17 +5,18 @@
  * @LastEditTime: 2023-12-29 17:36:13
  * @Description: 路由设置
  */
+
+import 'package:app_template/pages/Introduction/Introduction1.dart';
 import 'package:flutter/material.dart';
-//导入页面文件
-import '../pages/HomePage.dart';
+//导入layout文件
+import '../Layouts/mobile/MobileLayout1.dart';
 
 //路由表
 Map<String, WidgetBuilder> routes = {
-  "/": (context) => const HomePage(),     //注册根路由:默认第一个为系统根路由： initialRoute: "/",
-  "/home": (context) => const HomePage(), //home咯有
+  "/": (context) => Introduction1(), //注册根路由:默认第一个为系统根路由： initialRoute: "/",
+  "home": (context) => MobileLayout1(), // home 页路由
+  "introduce": (context) => Introduction1(), //介绍页路由
 };
-
-
 
 //路由拦截处理
 Function onGenerateRoute = (RouteSettings settings) {

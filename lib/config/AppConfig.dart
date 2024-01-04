@@ -10,14 +10,55 @@ import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_http2_adapter/dio_http2_adapter.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
+import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 import '../common/ToolsManager.dart';
+import '../pages/mobile/Page2.dart';
+import '../pages/mobile/Page3.dart';
+import '../pages/mobile/Page4.dart';
+import '../pages/mobile/PageHome.dart';
 
-class AppConfig  extends ToolsManager{
+import '../../widgets/BottomNavigationBars/animated_notch_bottom_bar.dart';
+import '../../widgets/BottomNavigationBars/bottom_navigation_bar_1.dart';
+import '../../widgets/BottomNavigationBars/bubble_bottom_bar.dart';
+import '../../widgets/BottomNavigationBars/convex_bottom_bar.dart';
+import '../../widgets/BottomNavigationBars/curved_navigation_bar.dart';
+import '../../widgets/BottomNavigationBars/fancy_bottom_navigation.dart';
+import '../../widgets/BottomNavigationBars/flutter_snake_navigationbar.dart';
+import '../../widgets/BottomNavigationBars/water_drop_nav_bar.dart';
+
+class AppConfig extends ToolsManager {
+  //引导页设置
+  static List introduces = [
+    {
+      "color": const Color(0xFF9B90BC), //颜色
+      "imageAssetPath":
+          'https://img.zcool.cn/community/01f522574d04386ac72525ae116c37.jpg@1280w_1l_2o_100sh.jpg', //图片路径：支持网络图片
+      "title": '页面三', //页面标题
+      "body": '与来自不同地方的人联系', //主题部分文字介绍
+      "doAnimateImage": true //是否图片做动画
+    },
+    {
+      "color": const Color(0xFF9B90BC), //颜色
+      "imageAssetPath":
+          'https://img.zcool.cn/community/014efc599f7b6da80121ad7bf79df0.jpg@1280w_1l_2o_100sh.jpg', //图片路径：支持网络图片
+      "title": '页面三', //页面标题
+      "body": '与来自不同地方的人联系', //主题部分文字介绍
+      "doAnimateImage": true //是否图片做动画
+    },
+    {
+      "color": const Color(0xFF9B90BC), //颜色
+      "imageAssetPath":
+          'https://img.zcool.cn/community/01c46e5a45ecffa801206ed31c4a15.jpg@3000w_1l_0o_100sh.jpg', //图片路径：支持网络图片
+      "title": '页面三', //页面标题
+      "body": '与来自不同地方的人联系', //主题部分文字介绍
+      "doAnimateImage": true //是否图片做动画
+    }
+  ];
 
   //获取App配置信息
-  static Map<String,dynamic> appConfig = {
+  static Map<String, dynamic> appConfig = {
     "name": "测试App",
     "time": "xxxxx",
     "version": "v1.0",
@@ -36,17 +77,43 @@ class AppConfig  extends ToolsManager{
     }
   };
 
+  //app底部tabs标签设置
+  static Color activeColor = Colors.blue; //选中颜色
+  static Color unActiveColor = Colors.black; //未选中颜色
+  //默认index=0
+  static int currentIndex = 0;
+  //-------------tabs设置----------
+  static List bottomTabs = <Map>[
+    {"name": "首页", "page": const PageHome(), "icon": Icons.home},
+    {"name": "购物", "page": const Page2(), "icon": Icons.shop},
+    {"name": "浏览", "page": const Page3(), "icon": Icons.browse_gallery},
+    {"name": "我的", "page": const Page4(), "icon": Icons.person}
+  ];
+
+  // 底部导航栏样式
+  static List bottomNavigators = <Function>[
+    flutter_snake_navigationbar,
+    animated_notch_bottom_bar,
+    water_drop_nav_bar,
+    convex_bottom_bar,
+    bubble_bottom_bar,
+    fancy_bottom_navigation,
+    curved_navigation_bar,
+    bottom_navigation_bar_1
+  ];
+  //当前底部导航栏的索引
+  static int currentBottomNavigatorIndex = 3;
+
   //http类配置参数
-  static final Map<String,dynamic> httpConfig = {
+  static final Map<String, dynamic> httpConfig = {
     "baseUrl": "https://api.jixs.cc", //基础URL
-    "connectTimeout":  Duration(seconds: 30),//连接超时
-    "receiveTimeout": Duration(seconds: 30),//接收超时
-    "responseType":  ResponseType.plain,//相应类型
+    "connectTimeout": Duration(seconds: 30), //连接超时
+    "receiveTimeout": Duration(seconds: 30), //接收超时
+    "responseType": ResponseType.plain, //相应类型
   };
 
-
   // dio缓存全局配置
-  static final cacheOptions =  CacheOptions(
+  static final cacheOptions = CacheOptions(
     // 缓存方式 A default store is required for interceptor.Volatile cache with LRU strategy.
     store: MemCacheStore(),
     // 默认缓存策略
@@ -70,9 +137,8 @@ class AppConfig  extends ToolsManager{
     allowPostMethod: false,
   );
 
-
   // dio日志打印拦截参数设置
-  static PrettyDioLogger prettyDioLogger =PrettyDioLogger(
+  static PrettyDioLogger prettyDioLogger = PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
       responseBody: true,
@@ -89,12 +155,13 @@ class AppConfig  extends ToolsManager{
     ),
   );
   // dio重试配置插件
-  static RetryInterceptor  getRetryInterceptor(Dio dio){
+  static RetryInterceptor getRetryInterceptor(Dio dio) {
     return RetryInterceptor(
       dio: dio,
       logPrint: print, //指定日志功能 (optional)
       retries: 3, // 重试次数 (optional)
-      retryDelays: const [ // 设置重试延迟间隔 (optional)
+      retryDelays: const [
+        // 设置重试延迟间隔 (optional)
         Duration(seconds: 1), // wait 1 sec before first retry
         Duration(seconds: 2), // wait 2 sec before second retry
         Duration(seconds: 3), // wait 3 sec before third retry
@@ -104,14 +171,12 @@ class AppConfig  extends ToolsManager{
 
   //  dio适配器设置
   static HttpClientAdapter get httpClientAdapter => Http2Adapter(
-    ConnectionManager(
-      idleTimeout: Duration(seconds: 10),
-      onClientCreate: (_, config) =>{
-        // config.proxy = Uri.parse('http://login:password@192.168.0.1:8888'),
-        config.onBadCertificate = (_) => true
-      },
-    ),
-  );
-
-
+        ConnectionManager(
+          idleTimeout: Duration(seconds: 10),
+          onClientCreate: (_, config) => {
+            // config.proxy = Uri.parse('http://login:password@192.168.0.1:8888'),
+            config.onBadCertificate = (_) => true
+          },
+        ),
+      );
 }
