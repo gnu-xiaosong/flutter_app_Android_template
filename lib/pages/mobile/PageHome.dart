@@ -1,50 +1,8 @@
-import 'dart:ffi';
-
 import 'package:app_template/widgets/drawers/MyDrawer.dart';
 import 'package:app_template/widgets/dropdowns/DropdownButton1.dart';
-import 'package:app_template/widgets/tabViews/TabView1.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import '../../config/AppConfig.dart';
-import '../../widgets/tabViews/TabView2.dart';
-import '../../widgets/tabViews/TabView3.dart';
-import '../../widgets/tabViews/TabView4.dart';
-
-//---------------顶部tabs配置------------------
-List TopTabs = <Map>[
-  {
-    "tab": Tab(
-      //tab Widget
-      //icon: const Icon(Icons.cloud_outlined),
-      text: "tab1", //tab名称
-    ),
-    "tabView": TabView1(),
-  },
-  {
-    "tab": Tab(
-      //tab Widget
-      //icon: const Icon(Icons.cloud_outlined),
-      text: "tab2", //tab名称
-    ),
-    "tabView": TabView2()
-  },
-  {
-    "tab": Tab(
-      //tab Widget
-      // icon: const Icon(Icons.cloud_outlined),
-      text: "tab3", //tab名称
-    ),
-    "tabView": TabView3()
-  },
-  {
-    "tab": Tab(
-      //tab Widget
-      // icon: const Icon(Icons.cloud_outlined),
-      text: "tab4", //tab名称
-    ),
-    "tabView": TabView4()
-  },
-];
 
 class PageHome extends StatefulWidget {
   const PageHome({super.key});
@@ -58,7 +16,7 @@ class _PageHomeState extends State<PageHome> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       //initialIndex: 1,  //初始化tab index
-      length: TopTabs.length,
+      length: AppConfig.TopTabs.length,
       child: Scaffold(
         appBar: AppBar(
           // 设置背景色
@@ -87,15 +45,15 @@ class _PageHomeState extends State<PageHome> {
           //标题--双标题
           title: Column(children: [
             Text(
-              AppConfig.appConfig['name'],
+              AppConfig.appConfig['name'].toString().tr(),
               style: const TextStyle(fontSize: 18),
             ),
             Text(
-              "我是小标题",
+              "我是小标题".tr(),
               style: const TextStyle(fontSize: 10),
             ),
           ]),
-          //action（操作）
+          //action（操作）right
           actions: [
             IconButton(
               onPressed: () {},
@@ -124,10 +82,13 @@ class _PageHomeState extends State<PageHome> {
             ),
           ),
           //底部部分
-          bottom: TabBar(tabs: <Widget>[for (var item in TopTabs) item['tab']]),
+          bottom: TabBar(
+              tabs: <Widget>[for (var item in AppConfig.TopTabs) item['tab']]),
         ),
         body: TabBarView(
-          children: <Widget>[for (var item in TopTabs) item['tabView']],
+          children: <Widget>[
+            for (var item in AppConfig.TopTabs) item['tabView']
+          ],
         ),
         //抽屉
         drawer: const MyDrawer(),

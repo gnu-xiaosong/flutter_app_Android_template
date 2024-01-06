@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_http2_adapter/dio_http2_adapter.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
@@ -27,6 +28,11 @@ import '../../widgets/BottomNavigationBars/curved_navigation_bar.dart';
 import '../../widgets/BottomNavigationBars/fancy_bottom_navigation.dart';
 import '../../widgets/BottomNavigationBars/flutter_snake_navigationbar.dart';
 import '../../widgets/BottomNavigationBars/water_drop_nav_bar.dart';
+//tabs view
+import '../../widgets/tabViews/TabView2.dart';
+import '../../widgets/tabViews/TabView3.dart';
+import '../../widgets/tabViews/TabView4.dart';
+import 'package:app_template/widgets/tabViews/TabView1.dart';
 
 class AppConfig extends ToolsManager {
   //引导页设置
@@ -57,9 +63,45 @@ class AppConfig extends ToolsManager {
     }
   ];
 
+  //---------------顶部tabs配置------------------
+  static List TopTabs = <Map>[
+    {
+      "tab": Tab(
+        //tab Widget
+        //icon: const Icon(Icons.cloud_outlined),
+        text: "tab1".tr(), //tab名称
+      ),
+      "tabView": TabView1(),
+    },
+    {
+      "tab": Tab(
+        //tab Widget
+        //icon: const Icon(Icons.cloud_outlined),
+        text: "tab2".tr(), //tab名称
+      ),
+      "tabView": TabView2()
+    },
+    {
+      "tab": Tab(
+        //tab Widget
+        // icon: const Icon(Icons.cloud_outlined),
+        text: "tab3".tr(), //tab名称
+      ),
+      "tabView": TabView3()
+    },
+    {
+      "tab": Tab(
+        //tab Widget
+        // icon: const Icon(Icons.cloud_outlined),
+        text: "tab4".tr(), //tab名称
+      ),
+      "tabView": TabView4()
+    },
+  ];
+
   //获取App配置信息
   static Map<String, dynamic> appConfig = {
-    "name": "测试App",
+    "name": "app",
     "time": "xxxxx",
     "version": "v1.0",
     "author": "xxxx",
@@ -84,10 +126,14 @@ class AppConfig extends ToolsManager {
   static int currentIndex = 0;
   //-------------tabs设置----------
   static List bottomTabs = <Map>[
-    {"name": "首页", "page": const PageHome(), "icon": Icons.home},
-    {"name": "购物", "page": const Page2(), "icon": Icons.shop},
-    {"name": "浏览", "page": const Page3(), "icon": Icons.browse_gallery},
-    {"name": "我的", "page": const Page4(), "icon": Icons.person}
+    {"name": "home".tr(), "page": const PageHome(), "icon": Icons.home},
+    {"name": "shopping".tr(), "page": const Page2(), "icon": Icons.shop},
+    {
+      "name": "browse".tr(),
+      "page": const Page3(),
+      "icon": Icons.browse_gallery
+    },
+    {"name": "person".tr(), "page": const Page4(), "icon": Icons.person}
   ];
 
   // 底部导航栏样式

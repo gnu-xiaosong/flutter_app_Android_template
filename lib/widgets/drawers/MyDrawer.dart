@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -32,15 +33,15 @@ class MyDrawer extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.account_circle_rounded),
                 subtitle: Text("我是账号"),
-                title: Text('账号'),
+                title: Text('account'.tr()),
               ),
               ListTile(
                 leading: Icon(Icons.person_2),
-                title: Text('个人中心'),
+                title: Text('person'.tr()),
               ),
               ListTile(
                 leading: Icon(Icons.settings_input_component),
-                title: Text('设置'),
+                title: Text('setting'.tr()),
               ),
             ],
           )

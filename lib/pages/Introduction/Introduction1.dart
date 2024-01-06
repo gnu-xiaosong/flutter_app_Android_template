@@ -7,6 +7,7 @@
  */
 
 import 'package:app_template/config/AppConfig.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 
@@ -37,9 +38,9 @@ class _Introduction1State extends State<Introduction1> {
       body: OverBoard(
         pages: introducePages,
         showBullets: true,
-        skipText: "跳过",
-        nextText: "下一步",
-        finishText: "完成",
+        skipText: "skip".tr(),
+        nextText: "next".tr(),
+        finishText: "finish".tr(),
         skipCallback: () {
           print("Skip回调");
         },

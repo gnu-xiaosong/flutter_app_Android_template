@@ -1,5 +1,10 @@
+import 'package:app_template/common/GlobalManager.dart';
+import 'package:app_template/common/NotificationsManager.dart';
+import 'package:app_template/states/DarkState.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DropdownButton1 extends StatefulWidget {
   const DropdownButton1({super.key});
@@ -67,14 +72,17 @@ class MenuItem {
 }
 
 abstract class MenuItems {
-  static const List<MenuItem> firstItems = [home, share, settings];
-  static const List<MenuItem> secondItems = [logout];
+  static const List<MenuItem> firstItems = [dark_mode, language, setting];
+  static const List<MenuItem> secondItems = [notification];
 
-  static const home = MenuItem(text: 'Home', icon: Icons.home);
-  static const share = MenuItem(text: 'Share', icon: Icons.share);
-  static const settings = MenuItem(text: 'Settings', icon: Icons.settings);
-  static const logout = MenuItem(text: 'Log Out', icon: Icons.logout);
+  //配置
+  static const dark_mode = MenuItem(text: 'dark', icon: Icons.dark_mode);
+  static const language = MenuItem(text: 'language', icon: Icons.language);
+  static const setting = MenuItem(text: 'setting', icon: Icons.settings);
+  static const notification =
+      MenuItem(text: 'notification', icon: Icons.notifications_none_outlined);
 
+  //点击事件
   static Widget buildItem(MenuItem item) {
     return Row(
       children: [
@@ -84,7 +92,7 @@ abstract class MenuItems {
         ),
         Expanded(
           child: Text(
-            item.text,
+            item.text.tr(),
             style: const TextStyle(
               color: Colors.black,
             ),
@@ -96,18 +104,33 @@ abstract class MenuItems {
 
   static void onChanged(BuildContext context, MenuItem item) {
     switch (item) {
-      case MenuItems.home:
+      case MenuItems.dark_mode:
         //Do something
+        Provider.of<DarkState>(context, listen: false).changeDarkMode();
         break;
-      case MenuItems.settings:
-        //Do something
+      case MenuItems.language:
+        //切换语言
+        _changeLocale(context);
         break;
-      case MenuItems.share:
-        //Do something
-        break;
-      case MenuItems.logout:
-        //Do something
+      case MenuItems.notification:
+        //本地通知测试
+        // NotificationsManager notice = GlobalManager.GlobalLocalNotification;
+        // notice.showNotification(title: "通知", body: "我是通知内容");
+
+        final NotificationsManager _localNotification = NotificationsManager();
+        _localNotification.showNotification(title: "通知", body: "我是通知内容");
         break;
     }
+  }
+}
+
+/// 切换语言
+void _changeLocale(BuildContext context) async {
+  print("当前语言:" + context.locale.toString());
+  print("------------------语言切换---------------------");
+  if (context.locale.toString() == 'zh_CH') {
+    await context.setLocale(context.supportedLocales[0]);
+  } else {
+    await context.setLocale(context.supportedLocales[1]);
   }
 }

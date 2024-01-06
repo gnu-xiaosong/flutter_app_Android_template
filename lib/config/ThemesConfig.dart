@@ -6,25 +6,104 @@
  * @Description: 主题配置类
  */
 
-
-
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/material/theme_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class ThemesConfig  {
+class ThemesConfig {
+  // 利用插件：FlexColorScheme配置主题插件
+  /*
+  * 配置地址:https://rydmike.com/flexcolorscheme/themesplayground-v7-2/#/
+  * */
 
-  //系统主题
-   static Map themes= {
-       "primarySwatch":Colors.blue, //主题颜色样本，见下面介绍
-       "primaryColor":Colors.blue, //主色，决定导航栏颜色
-       "cardColor":Colors.white, //卡片颜色
-       "dividerColor":Colors.black, //分割线颜色
-       //"buttonTheme":, //按钮主题
-       "dialogBackgroundColor":Colors.white,//对话框背景颜色
-       //"fontFamily":, //文字字体
-       //"textTheme":,// 字体主题，包括标题、body等文字样式
-       //"iconTheme":, // Icon的默认样式
-       //"platform":, //指定平台，应用特定平台控件风格
-       //"colorScheme":
-    };
+  //白天主题配置
+  static ThemeData LightTheme = FlexThemeData.light(
+    scheme: FlexScheme.blue,
+    subThemesData: const FlexSubThemesData(
+      interactionEffects: false,
+      tintedDisabledControls: false,
+      blendOnColors: false,
+      useTextTheme: true,
+      inputDecoratorBorderType: FlexInputBorderType.underline,
+      inputDecoratorUnfocusedBorderIsColored: false,
+      tooltipRadius: 4,
+      tooltipSchemeColor: SchemeColor.inverseSurface,
+      tooltipOpacity: 0.9,
+      snackBarElevation: 6,
+      snackBarBackgroundSchemeColor: SchemeColor.inverseSurface,
+      navigationBarSelectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationBarUnselectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationBarMutedUnselectedLabel: false,
+      navigationBarSelectedIconSchemeColor: SchemeColor.onSurface,
+      navigationBarUnselectedIconSchemeColor: SchemeColor.onSurface,
+      navigationBarMutedUnselectedIcon: false,
+      navigationBarIndicatorSchemeColor: SchemeColor.secondaryContainer,
+      navigationBarIndicatorOpacity: 1.00,
+      navigationRailSelectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationRailUnselectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationRailMutedUnselectedLabel: false,
+      navigationRailSelectedIconSchemeColor: SchemeColor.onSurface,
+      navigationRailUnselectedIconSchemeColor: SchemeColor.onSurface,
+      navigationRailMutedUnselectedIcon: false,
+      navigationRailIndicatorSchemeColor: SchemeColor.secondaryContainer,
+      navigationRailIndicatorOpacity: 1.00,
+      navigationRailBackgroundSchemeColor: SchemeColor.surface,
+      navigationRailLabelType: NavigationRailLabelType.none,
+    ),
+    keyColors: const FlexKeyColors(),
+    visualDensity: FlexColorScheme.comfortablePlatformDensity,
+    useMaterial3: true,
+    swapLegacyOnMaterial3: true,
+    // To use the Playground font, add GoogleFonts package and uncomment
+    fontFamily: GoogleFonts.notoSans().fontFamily,
+  );
 
+  static ThemeData darkTheme = FlexThemeData.dark(
+    scheme: FlexScheme.blue,
+    subThemesData: const FlexSubThemesData(
+      interactionEffects: false,
+      tintedDisabledControls: false,
+      useTextTheme: true,
+      inputDecoratorBorderType: FlexInputBorderType.underline,
+      inputDecoratorUnfocusedBorderIsColored: false,
+      tooltipRadius: 4,
+      tooltipSchemeColor: SchemeColor.inverseSurface,
+      tooltipOpacity: 0.9,
+      tabBarIndicatorWeight: 3.5,
+      tabBarIndicatorTopRadius: 10,
+      snackBarElevation: 6,
+      snackBarBackgroundSchemeColor: SchemeColor.inverseSurface,
+      navigationBarSelectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationBarUnselectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationBarMutedUnselectedLabel: false,
+      navigationBarSelectedIconSchemeColor: SchemeColor.onSurface,
+      navigationBarUnselectedIconSchemeColor: SchemeColor.onSurface,
+      navigationBarMutedUnselectedIcon: false,
+      navigationBarIndicatorSchemeColor: SchemeColor.secondaryContainer,
+      navigationBarIndicatorOpacity: 1.00,
+      navigationRailSelectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationRailUnselectedLabelSchemeColor: SchemeColor.onSurface,
+      navigationRailMutedUnselectedLabel: false,
+      navigationRailSelectedIconSchemeColor: SchemeColor.onSurface,
+      navigationRailUnselectedIconSchemeColor: SchemeColor.onSurface,
+      navigationRailMutedUnselectedIcon: false,
+      navigationRailIndicatorSchemeColor: SchemeColor.secondaryContainer,
+      navigationRailIndicatorOpacity: 1.00,
+      navigationRailBackgroundSchemeColor: SchemeColor.surface,
+      navigationRailLabelType: NavigationRailLabelType.none,
+    ),
+    keyColors: const FlexKeyColors(),
+    visualDensity: FlexColorScheme.comfortablePlatformDensity,
+    useMaterial3: true,
+    swapLegacyOnMaterial3: true,
+    // To use the Playground font, add GoogleFonts package and uncomment
+    // fontFamily: GoogleFonts.notoSans().fontFamily,
+  );
+
+  //主题
+  static Map getThemes() {
+    Map themes = {"light": LightTheme, "dark": darkTheme};
+    return themes;
+  }
 }
