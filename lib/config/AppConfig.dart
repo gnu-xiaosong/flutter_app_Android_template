@@ -17,9 +17,9 @@ import 'package:talker_dio_logger/talker_dio_logger.dart';
 import '../common/ToolsManager.dart';
 import '../pages/mobile/Page2.dart';
 import '../pages/mobile/Page3.dart';
-import '../pages/mobile/Page4.dart';
 import '../pages/mobile/PageHome.dart';
 
+import '../pages/mobile/PagePerson.dart';
 import '../../widgets/BottomNavigationBars/animated_notch_bottom_bar.dart';
 import '../../widgets/BottomNavigationBars/bottom_navigation_bar_1.dart';
 import '../../widgets/BottomNavigationBars/bubble_bottom_bar.dart';
@@ -32,7 +32,7 @@ import '../../widgets/BottomNavigationBars/water_drop_nav_bar.dart';
 import '../../widgets/tabViews/TabView2.dart';
 import '../../widgets/tabViews/TabView3.dart';
 import '../../widgets/tabViews/TabView4.dart';
-import 'package:app_template/widgets/tabViews/TabView1.dart';
+import '../../widgets/tabViews/TabView1.dart';
 
 class AppConfig extends ToolsManager {
   //引导页设置
@@ -133,7 +133,7 @@ class AppConfig extends ToolsManager {
       "page": const Page3(),
       "icon": Icons.browse_gallery
     },
-    {"name": "person".tr(), "page": const Page4(), "icon": Icons.person}
+    {"name": "person".tr(), "page": const PagePerson(), "icon": Icons.person}
   ];
 
   // 底部导航栏样式

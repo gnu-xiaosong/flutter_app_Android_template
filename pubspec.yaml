@@ -43,6 +43,8 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_local_notifications: ^16.3.0
   timezone: ^0.9.2
+  pull_to_refresh: ^2.0.0
+  shimmer: ^3.0.0
 
 
 #开发环境依赖
