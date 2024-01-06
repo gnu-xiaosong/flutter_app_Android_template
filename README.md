@@ -236,3 +236,4 @@ class AppConfig extends ToolsManager {
 参考：https://bdlukaa.github.io/fluent_ui/#/surfaces/tiles
 更新日志：
 - 2024.1.6 增加了notification本地化通知插件，并且进行了工具类封装,以及主题插件配置
+- 2024.1.7 增加下拉刷新以及微光效果，修改目录结构
