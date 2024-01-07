@@ -17,6 +17,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "6.2.0"
+  animations:
+    dependency: "direct main"
+    description:
+      name: animations
+      sha256: d3d6dcfb218225bbe68e87ccf6378bbb2e32a94900722c5f81611dad089911cb
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.11"
   ansicolor:
     dependency: transitive
     description:
@@ -241,6 +249,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.3"
+  cupertino_icons:
+    dependency: "direct main"
+    description:
+      name: cupertino_icons
+      sha256: d57953e10f9f8327ce64a508a355f0b1ec902193f66288e8cb5070e7c47eeb2d
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.6"
   curved_navigation_bar:
     dependency: "direct main"
     description:
@@ -443,6 +459,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_login_template:
+    dependency: "direct main"
+    description:
+      name: flutter_login_template
+      sha256: b7c396bfd34fb1628ef30b191cb730b661bf69c6d391c8afef788c52737078cc
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.0"
   flutter_overboard:
     dependency: "direct main"
     description:
@@ -459,6 +483,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.1"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      sha256: "6ff9fa12892ae074092de2fa6a9938fb21dbabfdaa2ff57dc697ff912fc8d4b2"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.6"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -469,6 +501,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: "direct main"
+    description:
+      name: font_awesome_flutter
+      sha256: "52671aea66da73b58d42ec6d0912b727a42248dd9a7c76d6c20f275783c48c08"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "10.6.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -709,6 +749,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.3"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      sha256: bbb1934c0cbb03091af082a6389ca2080345291ef07a5fa6d6e078ba8682f977
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      sha256: e3e67b1629e6f7e8100b367d3db6ba6af4b1f0bb80f64db18ef1fbabd2fa9ccf
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   path_provider:
     dependency: transitive
     description:

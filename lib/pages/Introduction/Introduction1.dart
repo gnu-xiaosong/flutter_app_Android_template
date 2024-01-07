@@ -45,7 +45,7 @@ class _Introduction1State extends State<Introduction1> {
           print("Skip回调");
         },
         finishCallback: () {
-          print("finish回调");
+          Navigator.pop(context);
           //跳转到首页
           Navigator.pushNamed(context, "home");
         },

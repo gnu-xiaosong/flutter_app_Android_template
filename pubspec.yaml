@@ -45,6 +45,11 @@ dependencies:
   timezone: ^0.9.2
   pull_to_refresh: ^2.0.0
   shimmer: ^3.0.0
+  font_awesome_flutter: ^10.6.0
+  flutter_login_template: ^1.1.0
+  animations: ^2.0.11
+  flutter_svg: ^1.1.0
+  cupertino_icons: ^1.0.5
 
 
 #开发环境依赖
@@ -71,6 +76,9 @@ flutter:
   assets:
     - assets/App.json
     - assets/translations/
+    - assets/introduction_animation/
+    - assets/images/
+    - assets/icons/
 
 
   # fonts:
