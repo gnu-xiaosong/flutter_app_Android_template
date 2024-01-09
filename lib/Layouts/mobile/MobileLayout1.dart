@@ -24,9 +24,11 @@ class _MobileLayout1State extends State<MobileLayout1> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         //抽屉
-        drawer: const Drawer(
-          child: MyDrawer(),
-        ),
+        drawer: FractionallySizedBox(
+            widthFactor: 0.64,
+            child: Drawer(
+              child: MyDrawer(),
+            )),
         //pages页面
         body: //增加动画效果
             AnimationLimiter(

@@ -1,6 +1,7 @@
 import 'package:app_template/common/GlobalManager.dart';
 import 'package:app_template/common/NotificationsManager.dart';
 import 'package:app_template/states/DarkState.dart';
+import 'package:bruno/bruno.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -155,32 +156,38 @@ void _changeLocale(BuildContext context) async {
 
 //显示dialog
 void showDialog(BuildContext context) {
-  Dialogs.materialDialog(
-      msg: 'Are you sure ? you can\'t undo this',
-      title: "Delete",
-      color: Colors.white,
-      context: context,
-      dialogWidth: kIsWeb ? 0.3 : null,
-      onClose: (value) => print("returned value is '$value'"),
-      actions: [
-        IconsOutlineButton(
-          onPressed: () {
-            Navigator.of(context).pop(['Test', 'List']);
-          },
-          text: 'Cancel',
-          iconData: Icons.cancel_outlined,
-          textStyle: TextStyle(color: Colors.grey),
-          iconColor: Colors.grey,
-        ),
-        IconsButton(
-          onPressed: () {},
-          text: "Delete",
-          iconData: Icons.delete,
-          color: Colors.red,
-          textStyle: TextStyle(color: Colors.white),
-          iconColor: Colors.white,
-        ),
-      ]);
+  BrnDialogManager.showConfirmDialog(context,
+      title: "标题内容标题内容标题内容标题内容", cancel: '取消', confirm: '确定', onCancel: () {
+    EasyLoading.showError("failse");
+  }, onConfirm: () {
+    EasyLoading.showSuccess("ok");
+  });
+  // Dialogs.materialDialog(
+  //     msg: 'Are you sure ? you can\'t undo this',
+  //     title: "Delete",
+  //     color: Colors.white,
+  //     context: context,
+  //     dialogWidth: kIsWeb ? 0.3 : null,
+  //     onClose: (value) => print("returned value is '$value'"),
+  //     actions: [
+  //       IconsOutlineButton(
+  //         onPressed: () {
+  //           Navigator.of(context).pop(['Test', 'List']);
+  //         },
+  //         text: 'Cancel',
+  //         iconData: Icons.cancel_outlined,
+  //         textStyle: TextStyle(color: Colors.grey),
+  //         iconColor: Colors.grey,
+  //       ),
+  //       IconsButton(
+  //         onPressed: () {},
+  //         text: "Delete",
+  //         iconData: Icons.delete,
+  //         color: Colors.red,
+  //         textStyle: TextStyle(color: Colors.white),
+  //         iconColor: Colors.white,
+  //       ),
+  //     ]);
 }
 
 //显示toast

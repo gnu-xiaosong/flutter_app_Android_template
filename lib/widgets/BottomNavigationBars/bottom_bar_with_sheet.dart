@@ -39,6 +39,13 @@ class _BottombarwithsheetState extends State<Bottombarwithsheet> {
         mainButtonPosition: MainButtonPosition.middle,
         decoration: BoxDecoration(
           color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              blurRadius: 0.0 /*边缘完全不模糊*/,
+              // blurRadius: 45/*边缘模糊*/,
+            ),
+          ],
           borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
         ),
         itemIconColor: Colors.grey,
