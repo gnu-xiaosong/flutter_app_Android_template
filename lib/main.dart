@@ -2,6 +2,7 @@ import 'package:app_template/states/DarkState.dart';
 import 'package:app_template/states/DescState.dart';
 import 'package:app_template/states/ThemeState.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 //路由
@@ -110,6 +111,7 @@ class _MaterialApplicationState extends State<MaterialApplication> {
               // onUnknownRoute:,
               //是否显示调试标
               debugShowCheckedModeBanner: !GlobalManager.isRelease,
+              builder: EasyLoading.init(), // 1.toast初始化
             ));
   }
 }

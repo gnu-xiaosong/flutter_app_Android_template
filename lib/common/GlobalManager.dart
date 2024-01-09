@@ -12,8 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //应用配置信息
 import '../models/index.dart';
-//常量配置文件
-import '../config/ConstConfig.dart';
 //HttpManager管理工具类
 import '../common/HttpManager.dart';
 //本地通知管理
@@ -45,6 +43,7 @@ class GlobalManager {
   //初始化全局信息，会在APP启动时执行
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
+
     // -------------------管理类初始化--------------------
     //1.本地通知初始化(单例模式)
     NotificationsManager notification = NotificationsManager();

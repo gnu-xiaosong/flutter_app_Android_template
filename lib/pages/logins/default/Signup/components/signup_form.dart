@@ -15,10 +15,10 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.streetAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
-            onSaved: (email) {},
+            onSaved: (account) {},
             decoration: InputDecoration(
               hintText: "Your account".tr(),
               prefixIcon: Padding(

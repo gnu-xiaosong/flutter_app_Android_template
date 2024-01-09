@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../widgets/drawers/MyDrawer.dart';
 import '../../config/AppConfig.dart';
 
@@ -27,7 +28,10 @@ class _MobileLayout1State extends State<MobileLayout1> {
           child: MyDrawer(),
         ),
         //pages页面
-        body: AppConfig.bottomTabs[AppConfig.currentIndex]['page'] as Widget,
+        body: //增加动画效果
+            AnimationLimiter(
+          child: AppConfig.bottomTabs[AppConfig.currentIndex]['page'] as Widget,
+        ),
         //底部导航栏
         bottomNavigationBar:
             AppConfig.bottomNavigators[AppConfig.currentBottomNavigatorIndex](

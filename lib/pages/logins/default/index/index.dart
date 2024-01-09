@@ -4,8 +4,8 @@ import '../components/responsive.dart';
 import 'components/login_signup_btn.dart';
 import 'components/welcome_image.dart';
 
-class Login1 extends StatelessWidget {
-  const Login1({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

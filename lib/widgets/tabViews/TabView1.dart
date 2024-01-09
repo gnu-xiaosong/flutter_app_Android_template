@@ -7,16 +7,69 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
 
+Widget Tile(int index) {
+  return Container(
+    width: double.infinity,
+    color: Colors.blue,
+    padding: const EdgeInsets.all(3),
+    child: Center(child: Text(index.toString())),
+  );
+}
+
 //主页面组件
 Widget Index() {
+  return StaggeredGrid.count(
+    crossAxisCount: 4,
+    mainAxisSpacing: 4,
+    crossAxisSpacing: 4,
+    children: [
+      StaggeredGridTile.count(
+        crossAxisCellCount: 4,
+        mainAxisCellCount: 2,
+        child: Swiper(
+          itemBuilder: (BuildContext context, int index) {
+            return new Image.network(
+              "http://via.placeholder.com/288x188",
+              fit: BoxFit.fill,
+            );
+          },
+          itemCount: 10,
+          viewportFraction: 0.8,
+          scale: 0.9,
+        ),
+      ),
+      StaggeredGridTile.count(
+        crossAxisCellCount: 2,
+        mainAxisCellCount: 2,
+        child: Tile(0),
+      ),
+      StaggeredGridTile.count(
+        crossAxisCellCount: 2,
+        mainAxisCellCount: 1,
+        child: Tile(1),
+      ),
+      StaggeredGridTile.count(
+        crossAxisCellCount: 1,
+        mainAxisCellCount: 1,
+        child: Tile(2),
+      ),
+      StaggeredGridTile.count(
+        crossAxisCellCount: 1,
+        mainAxisCellCount: 1,
+        child: Tile(3),
+      ),
+    ],
+  );
   //微光效果
-  return Shimmer.fromColors(
-      baseColor: Colors.red,
-      highlightColor: Colors.yellow,
-      child: Center(child: Text("tabview 1")));
+  // return Shimmer.fromColors(
+  //     baseColor: Colors.red,
+  //     highlightColor: Colors.yellow,
+  //     child: Center(child: Text("tabview 1")));
 }
 
 //刷新控制器获取控制器

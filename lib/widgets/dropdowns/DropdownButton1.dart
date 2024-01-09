@@ -3,7 +3,12 @@ import 'package:app_template/common/NotificationsManager.dart';
 import 'package:app_template/states/DarkState.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:material_dialogs/dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_button.dart';
+import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import 'package:provider/provider.dart';
 
 class DropdownButton1 extends StatefulWidget {
@@ -72,7 +77,12 @@ class MenuItem {
 }
 
 abstract class MenuItems {
-  static const List<MenuItem> firstItems = [dark_mode, language, setting];
+  static const List<MenuItem> firstItems = [
+    dark_mode,
+    language,
+    setting,
+    add_alert
+  ];
   static const List<MenuItem> secondItems = [notification];
 
   //配置
@@ -81,6 +91,7 @@ abstract class MenuItems {
   static const setting = MenuItem(text: 'setting', icon: Icons.settings);
   static const notification =
       MenuItem(text: 'notification', icon: Icons.notifications_none_outlined);
+  static const add_alert = MenuItem(text: 'toast', icon: Icons.add_alert);
 
   //点击事件
   static Widget buildItem(MenuItem item) {
@@ -112,11 +123,18 @@ abstract class MenuItems {
         //切换语言
         _changeLocale(context);
         break;
+      case MenuItems.setting:
+        //弹窗提示
+        showDialog(context);
+        break;
+      case MenuItems.add_alert:
+        //toast提示
+        showToast(context);
+        break;
       case MenuItems.notification:
         //本地通知测试
         // NotificationsManager notice = GlobalManager.GlobalLocalNotification;
         // notice.showNotification(title: "通知", body: "我是通知内容");
-
         final NotificationsManager _localNotification = NotificationsManager();
         _localNotification.showNotification(title: "通知", body: "我是通知内容");
         break;
@@ -133,4 +151,50 @@ void _changeLocale(BuildContext context) async {
   } else {
     await context.setLocale(context.supportedLocales[1]);
   }
+}
+
+//显示dialog
+void showDialog(BuildContext context) {
+  Dialogs.materialDialog(
+      msg: 'Are you sure ? you can\'t undo this',
+      title: "Delete",
+      color: Colors.white,
+      context: context,
+      dialogWidth: kIsWeb ? 0.3 : null,
+      onClose: (value) => print("returned value is '$value'"),
+      actions: [
+        IconsOutlineButton(
+          onPressed: () {
+            Navigator.of(context).pop(['Test', 'List']);
+          },
+          text: 'Cancel',
+          iconData: Icons.cancel_outlined,
+          textStyle: TextStyle(color: Colors.grey),
+          iconColor: Colors.grey,
+        ),
+        IconsButton(
+          onPressed: () {},
+          text: "Delete",
+          iconData: Icons.delete,
+          color: Colors.red,
+          textStyle: TextStyle(color: Colors.white),
+          iconColor: Colors.white,
+        ),
+      ]);
+}
+
+//显示toast
+void showToast(context) {
+  /*
+  * 配置文档地址：https://pub-web.flutter-io.cn/packages/flutter_easyloading
+  *
+  * */
+  // EasyLoading.show(status: 'loading...');
+
+  // EasyLoading.showProgress(0.3, status: 'downloading...');
+  EasyLoading.showSuccess('Great Success!'.tr());
+  // EasyLoading.showError('Failed with Error');
+  // EasyLoading.showInfo('Useful Information.');
+  // EasyLoading.showToast('Toast');
+  // EasyLoading.dismiss();
 }
