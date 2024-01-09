@@ -2,6 +2,7 @@
 * 文档地址：https://pub-web.flutter-io.cn/packages/bottom_bar_with_sheet#getting-started
 * */
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../config/AppConfig.dart';
 
@@ -53,7 +54,7 @@ class _BottombarwithsheetState extends State<Bottombarwithsheet> {
       onSelectItem: (index) => _callback(index),
       sheetChild: Center(
         child: Text(
-          "Another content",
+          "Another content".tr(),
           style: TextStyle(
             color: Colors.grey[600],
             fontSize: 20,

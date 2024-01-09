@@ -3,6 +3,8 @@
 ```
 这是基于Flutter开发框架的快速开发模版。
 ```
+### 文档地址
+https://gnu-xiaosong.github.io/flutter_quaker_app/
 
 ### 版本
 

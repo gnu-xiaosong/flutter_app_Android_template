@@ -6,11 +6,21 @@
  * @Description: home页 topTab切换标签tabview
  */
 
+import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
+
+//轮播图
+// 轮播图片
+List<Map> imageList = [
+  {"url": "http://www.itying.com/images/flutter/1.png"},
+  {"url": "http://www.itying.com/images/flutter/2.png"},
+  {"url": "http://www.itying.com/images/flutter/3.png"},
+  {"url": "http://www.itying.com/images/flutter/4.png"}
+];
 
 Widget Tile(int index) {
   return Container(
@@ -29,20 +39,34 @@ Widget Index() {
     crossAxisSpacing: 4,
     children: [
       StaggeredGridTile.count(
-        crossAxisCellCount: 4,
-        mainAxisCellCount: 2,
-        child: Swiper(
-          itemBuilder: (BuildContext context, int index) {
-            return new Image.network(
-              "http://via.placeholder.com/288x188",
-              fit: BoxFit.fill,
-            );
-          },
-          itemCount: 10,
-          viewportFraction: 0.8,
-          scale: 0.9,
-        ),
-      ),
+          crossAxisCellCount: 4,
+          mainAxisCellCount: 2,
+          child: new Swiper(
+            //初始的时候下标位置
+            index: 0,
+            //当用户点击某个轮播的时候调用
+            onTap: (index) {
+              print(index);
+            },
+            //指示器
+            indicatorLayout: PageIndicatorLayout.COLOR,
+            //动画时间，单位是毫秒
+            duration: 300,
+            autoplay: true,
+            //方向
+            scrollDirection: Axis.horizontal,
+            //item构建器
+            itemBuilder: (BuildContext context, int index) {
+              return new Image.network(
+                imageList[index]["url"],
+                fit: BoxFit.fill,
+              );
+            },
+            //样式
+            layout: SwiperLayout.DEFAULT,
+            //item数量
+            itemCount: imageList.length,
+          )),
       StaggeredGridTile.count(
         crossAxisCellCount: 2,
         mainAxisCellCount: 2,
