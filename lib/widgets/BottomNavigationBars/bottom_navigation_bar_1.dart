@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../config/AppConfig.dart';
 
-Widget bottom_navigation_bar_1(Function callback) {
+Widget bottom_navigation_bar_1(Function callback, {Function? setState}) {
   return BottomNavigationBar(
     items: [
       for (var item in AppConfig.bottomTabs)

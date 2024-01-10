@@ -5,7 +5,7 @@ import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import '../../config/AppConfig.dart';
 
-Widget animated_bottom_navigation_bar(Function callback) {
+Widget animated_bottom_navigation_bar(Function callback, {Function? setState}) {
   return AnimatedBottomNavigationBar(
     //底部tab导航item
     bottomBarItems: [

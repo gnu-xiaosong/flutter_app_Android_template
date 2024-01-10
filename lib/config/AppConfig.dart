@@ -35,6 +35,7 @@ import '../../widgets/tabViews/TabView4.dart';
 import '../../widgets/tabViews/TabView1.dart';
 import '../widgets/BottomNavigationBars/animated_bottom_navigation_bar.dart';
 import '../widgets/BottomNavigationBars/bottom_bar_with_sheet.dart';
+import '../widgets/BottomNavigationBars/floating_bottom_navigation_bar.dart';
 
 class AppConfig extends ToolsManager {
   //引导页设置
@@ -149,10 +150,11 @@ class AppConfig extends ToolsManager {
     curved_navigation_bar,
     bottom_navigation_bar_1,
     bottom_bar_with_sheet,
-    animated_bottom_navigation_bar
+    animated_bottom_navigation_bar,
+    floating_bottom_navigation_bar
   ];
   //当前底部导航栏的索引
-  static int currentBottomNavigatorIndex = 8;
+  static int currentBottomNavigatorIndex = 10;
 
   //http类配置参数
   static final Map<String, dynamic> httpConfig = {

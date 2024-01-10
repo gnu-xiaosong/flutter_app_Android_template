@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 import '../../config/AppConfig.dart';
 
-Widget water_drop_nav_bar(Function callback) {
+Widget water_drop_nav_bar(Function callback, {Function? setState}) {
   return WaterDropNavBar(
     backgroundColor: Colors.white,
     onItemSelected: (index) => callback(index),

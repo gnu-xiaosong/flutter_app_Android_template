@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 import '../../config/AppConfig.dart';
 
-Widget animated_notch_bottom_bar(Function callback) {
+Widget animated_notch_bottom_bar(Function callback, {Function? setState}) {
   return MoltenBottomNavigationBar(
     //tabbar的背景色
     barColor: Colors.blue,

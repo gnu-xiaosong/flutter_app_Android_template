@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../config/AppConfig.dart';
 
-Widget curved_navigation_bar(Function callback) {
+Widget curved_navigation_bar(Function callback, {Function? setState}) {
   return CurvedNavigationBar(
     //背景颜色
     backgroundColor: Colors.blueAccent,

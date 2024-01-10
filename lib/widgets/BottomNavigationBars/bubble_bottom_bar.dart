@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../config/AppConfig.dart';
 
-Widget bubble_bottom_bar(Function callback) {
+Widget bubble_bottom_bar(Function callback, {Function? setState}) {
   return BubbleBottomBar(
     opacity: .2,
     currentIndex: AppConfig.currentIndex,

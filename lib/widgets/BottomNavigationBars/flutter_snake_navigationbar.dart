@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import '../../config/AppConfig.dart';
 
-Widget flutter_snake_navigationbar(Function callback) {
+Widget flutter_snake_navigationbar(Function callback, {Function? setState}) {
   return SnakeNavigationBar.color(
     /* behaviour: snakeBarStyle,
     snakeShape: snakeShape,

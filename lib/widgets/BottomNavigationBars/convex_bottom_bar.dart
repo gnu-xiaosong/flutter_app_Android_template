@@ -7,7 +7,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import '../../config/AppConfig.dart';
 
-Widget convex_bottom_bar(Function callback) {
+Widget convex_bottom_bar(Function callback, {Function? setState}) {
   return ConvexAppBar(
     items: [
       for (var item in AppConfig.bottomTabs)

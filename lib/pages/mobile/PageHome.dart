@@ -124,8 +124,10 @@ class BottomSheetHeader extends StatelessWidget {
   const BottomSheetHeader({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Icon(Icons.arrow_upward_sharp),
+    return Container(
+      width: double.infinity,
+      height: 6,
+      color: Colors.red,
     );
   }
 }
