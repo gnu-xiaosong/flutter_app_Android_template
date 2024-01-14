@@ -12,7 +12,7 @@ https://gnu-xiaosong.github.io/flutter_quaker_app/
 
 ### 模版
 
-![Alt text](img.png)
+![Alt text](img_2.png)
 ### 版本
 
 V1.0
